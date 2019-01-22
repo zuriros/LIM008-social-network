@@ -1,5 +1,21 @@
 # Creando una Red Social
 
+## Índice
+
+* [Preámbulo](#preámbulo)
+* [Introducción](#introducción)
+* [Objetivos de aprendizaje](#objetivos-de-aprendizaje)
+* [Consideraciones generales](#consideraciones-generales)
+* [Parte obligatoria](#parte-obligatoria)
+* [Parte opcional](#hacker-edition)
+* [Consideraciones técnicas](#consideraciones-técnicas)
+* [Consideraciones UX](#consideraciones-ux)
+* [Consideraciones Agile](#consideraciones-ágil)
+* [Habilidades blandas](#habilidades-blandas)
+* [Enrega Final](#entrega)
+* [Pistas / Tips / Lecturas complementarias](#recursos)
+* [Checklist](#checklist)
+
 ## Preámbulo
 
 Instagram, Snapchat, Twitter, Facebook, Twitch, Linkedin, etc. Las redes
@@ -287,7 +303,6 @@ puedas haber encontrado en el camino.
 | Validación | 3
 | Estilo | 3
 | Semántica | 3
-| SEO | n/a
 | **CSS** | |
 | DRY | 3
 | Responsive | 3
@@ -323,7 +338,7 @@ habilidades blandas. Te aconsejamos revisar la rúbrica:
 
 ***
 
-## Pistas / Tips / Lecturas complementarias
+## Recursos
 
 ### Mobile first
 
