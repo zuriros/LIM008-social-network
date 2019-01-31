@@ -1,5 +1,6 @@
 
-export const configFirebase = () => {
+
+export const initFirebase = () => {
 
   const config = {
     apiKey: "AIzaSyBZ10BybLZPmFiiGNt8SfuqTnZyrnN6oow",
