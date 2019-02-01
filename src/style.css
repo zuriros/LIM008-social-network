@@ -27,6 +27,12 @@ button {
   opacity: 0.9;
 }
 
+a {
+  color: dodgerblue;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 button:hover {
   opacity:1;
 }

@@ -13,7 +13,7 @@ export default () => {
     </div>
       
     <div class="gr27e">
-      <p class="izU2O">¿No tienes una cuenta? <a href="/accounts/login/?source=auth_switcher">Regístrate</a></p>
+      <p class="izU2O">¿No tienes una cuenta? <a id="a-signUp">Regístrate</a></p>
     </div>
   </form>
   

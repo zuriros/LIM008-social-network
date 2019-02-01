@@ -1,5 +1,4 @@
 
-
 export const initFirebase = () => {
 
   const config = {

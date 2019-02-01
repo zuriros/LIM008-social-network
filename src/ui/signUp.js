@@ -1,7 +1,5 @@
 export default () => {
   const htmlContent = `
-
-
 <form action="action_page.php" style="border:1px solid #ccc">
   <div class="container">
   <div class="gr27e">
@@ -10,7 +8,7 @@ export default () => {
 
     <button type="submit" >Iniciar sesión con  Google</button>
     <button type="submit" >Iniciar sesión con  Facebook</button>
-    <hr>0 <hr>
+    <hr>
     <input type="text" placeholder="Nombre" name="name" required>
     <input id="txtEmail" type="email" placeholder="Correo electrónico" name="email" required>
     <input id="txtPassword" type="password" placeholder="Contraseña" name="psw" required>
@@ -21,12 +19,12 @@ export default () => {
     <p>Al registrate, aceptas nuestras Condiciones, la Política de datos
     <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
     <div class="clearfix">
-    <button type="button" id = "btnSignUp" class="btn btn-secondary">Registrarse</button>
+    <button type="submit" id = "btnSignUp" class="btn btn-secondary">Registrarse</button>
     </div>
   </div>
     
   <div class="gr27e">
-    <p class="izU2O">¿Tienes una cuenta? <a href="/accounts/login/?source=auth_switcher">Inicia sesión</a></p>
+    <p class="izU2O">¿Tienes una cuenta? <a id="a-signIn">Inicia sesión</a></p>
   </div>
 </form>
 
@@ -37,6 +35,5 @@ export default () => {
   const sectionMain = document.getElementById('container');
   sectionMain.innerHTML = ''
   sectionMain.innerHTML = htmlContent
-
 
 };
