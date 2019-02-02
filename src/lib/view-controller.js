@@ -5,7 +5,6 @@ import {signUpFirebase, loginFacebook, loginGoogle} from '../lib/authFirebase.js
 
 signUp();
 
-const btnGoogle = document.getElementById('btn-google');
 
 // Obtener elementos
 const txtEmail = document.getElementById('txtEmail');
