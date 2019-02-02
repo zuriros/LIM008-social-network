@@ -1,4 +1,6 @@
 
+import {initRouter} from "./router.js";
+
 export const initFirebase = () => {
 
   const config = {
@@ -11,11 +13,7 @@ export const initFirebase = () => {
   };
   firebase.initializeApp(config);
   
-console.log("i am on fire");
-
-
+initRouter();
 }
-
-
     
 
