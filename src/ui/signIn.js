@@ -25,6 +25,10 @@ export default () => {
     sectionMain.innerHTML = ''
     sectionMain.innerHTML = htmlContent
   
-  
+    const btnSignIn = form.querySelector('#btn-sign-in');
+    btnSignIn.addEventListener('click', signInOnSubmit);
+    return form;
+
+
   };
   

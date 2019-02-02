@@ -6,7 +6,7 @@ export default () => {
     <h1>Eco Hack</h1>
     <p>Please fill in this form to create an account.</p>
 
-    <button type="submit" >Iniciar sesión con  Google</button>
+    <button type="button" id="btn-google" >Iniciar sesión con  Google</button>
     <button type="submit" >Iniciar sesión con  Facebook</button>
     <hr>
     <input type="text" placeholder="Nombre" name="name" required>

@@ -1,13 +1,10 @@
-
-
 import signUp from '../ui/signUp.js';
 import signIn from '../ui/signIn.js';
-import {signUpFirebase} from '../lib/authFirebase.js';
+import { signUpFirebase } from '../lib/authFirebase.js';
 
 signUp();
 
-
-
+const btnGoogle = document.getElementById('btn-google');
 
 // Obtener elementos
 const txtEmail = document.getElementById('txtEmail');
@@ -17,20 +14,9 @@ const aSignIn = document.getElementById('a-signIn');
 const aSignUp = document.getElementById('a-signUp');
 
 btnSignUp.addEventListener('click', e => {
-    signUpFirebase(txtEmail,txtPassword);
-   
-  });
+  signUpFirebase(txtEmail, txtPassword);
+});
 
-  aSignIn.addEventListener('click', e => {
-    signIn();
-  });
-
-  aSignUp.addEventListener('click', e => {
-    signUp();
-  });
-export const myFunction = () => {
-  // aqui tu codigo
-
-
-
-}
+aSignIn.addEventListener('click', e => {
+  signIn();
+});
