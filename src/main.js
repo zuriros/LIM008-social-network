@@ -6,4 +6,4 @@ import { initFirebase } from './lib/initFirebase.js';
 
 
 
-window.onload = initFirebase();
+window.onload = initFirebase;
