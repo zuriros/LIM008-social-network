@@ -26,7 +26,12 @@ button {
   width: 100%;
   opacity: 0.9;
 }
-
+form {
+  display: flex;
+  padding-left: 20%;
+  width: 80%;
+  }
+  
 a {
   color: dodgerblue;
   text-decoration: underline;
