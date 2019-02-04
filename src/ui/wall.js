@@ -10,16 +10,10 @@ const wallInformation = (show) => {
 
 export default () => {
    const divContainer = document.createElement('div');
-   const wallGeneral = `
-   <form class="d-flex justify-content-center">
-      <div class = 'wallContainer'>
-      <div>
-
-      </div>
-      </div>
-   
-   
-   `;
-
-   divContainer.innerHTML = wallGeneral;
+    const homeContent = `
+     <p> hola baby </p>
+    `;
+    divContainer.innerHTML = homeContent;
+    return divContainer;
+ 
 }

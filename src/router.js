@@ -1,37 +1,41 @@
-
-
+import signUp from './ui/signUp.js';
+import signIn from './ui/signIn.js';
+import wall from './ui/wall.js'
 
 const changeTmp = (hash) => {
-    if (hash === '#/' || hash === '' || hash === '#') {
-      return viewTmp('#/signIn');
-    } else if (hash === '#/signIn' || hash === '#/home') {
-      return viewTmp(hash);
-    } else {
-      return viewTmp('#/signIn');
-    }
+  console.log("changeTmp"+hash);
+  if (hash === '#/' || hash === '' || hash === '#') {
+    return viewTmp('#/signUp');
+  } else if (hash === '#/signIn' || hash === '#/signUp'|| hash === '#/wall') {
+    return viewTmp(hash);
+  } else {
+    return viewTmp('#/signUp');
   }
-  
-  const viewTmp = (routers) => {
-    const router = routers.substr(2, routers.length - 2)
-    const root = document.getElementById('root');
+}
+
+const viewTmp = (routers) => {
+  const router = routers.substr(2, routers.length - 2)
+  const root = document.getElementById('container');
+  root.innerHTML = '';
+  console.log(routers)
+  switch (router) {
+    case 'wall':
     root.innerHTML = '';
-    switch (router) {
-      case 'home':
-        getNotes((notes) => {
-          root.innerHTML = '';        
-          root.appendChild(Home(notes));  
-        })
-        break;
+      root.appendChild(wall());
+      break; 
+    case 'signUp':
+      root.appendChild(signUp());
+      break;
       case 'signIn':
-        root.appendChild(Login());
-        break;
-      default:
-        root.appendChild(Login());
-        break;
-    }
+      root.appendChild(signIn());
+      break;
+    default:
+      root.appendChild(signUp());
+      break;
   }
-  
-  export const initRouter = () => {
-    window.addEventListener('load', changeTmp(window.location.hash))
-    if (("onhashchange" in window)) window.onhashchange = () => changeTmp(window.location.hash)
-  }
+}
+
+export const initRouter = () => {
+  window.addEventListener('load', changeTmp(window.location.hash))
+  if (('onhashchange' in window)) window.onhashchange = () => changeTmp(window.location.hash);
+}
