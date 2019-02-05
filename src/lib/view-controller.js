@@ -7,8 +7,17 @@ export const signUpOnSubmit = () => {
   const email = document.querySelector('#up-email').value;
   const password = document.querySelector('#up-password').value;
   signUp(email, password)
-    .then(() => changeHash('/wall'))
-    .catch(() => { })
+  .then(result =>{
+    const urlMyPage = {
+       url: window.location.href+'#/signIn'
+    }
+    result.user.sendEmailVerification(urlMyPage).catch(function(error) {
+        alert('No se pudo enviar email')
+ });
+    firebase.auth().signOut()
+ }).catch(function(error) {
+    alert(error.message)
+  });
 }
 export const signFacebook = () => {
   loginFacebook()
