@@ -1,4 +1,4 @@
-import { signIn, signUp, loginFacebook, loginGoogle } from "./controller-firebase.js";
+import { signIn, signUp, loginFacebook, loginGoogle, addNote } from "./controller-firebase.js";
 
 const changeHash = (hash) => {
   location.hash = hash;
@@ -41,4 +41,28 @@ export const showIn = () => {
 }
 export const showUp = () => {
   changeHash('/signUp');
+}
+
+
+export const addNoteOnSubmit = (event) => {
+  event.preventDefault();
+  const input = document.getElementById('input-new-note');
+  const snackbarContainer = document.getElementById('demo-snackbar');
+  // data que muestra el snackbar
+  const data = {
+    message: '',
+    timeout: 2000,
+    actionText: 'Undo'
+  };
+
+  addNote(input.value)
+    .then(() => {
+      input.value = '';
+      data.message = 'Nota agregada'
+      snackbarContainer.MaterialSnackbar.showSnackbar(data);
+    }).catch(() => {
+      input.value = '';
+      data.message = 'Lo sentimos, no se pudo agregar la nota';
+      snackbarContainer.MaterialSnackbar.showSnackbar(data);
+    });
 }
