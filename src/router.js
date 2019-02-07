@@ -1,6 +1,7 @@
 import signUp from './ui/signUp.js';
 import signIn from './ui/signIn.js';
-import wall from './ui/wall.js'
+import wall from './ui/wall.js';
+// import {getNotes} from './lib/controller-firebase.js';
 
 const changeTmp = (hash) => {
   console.log("changeTmp"+hash);
@@ -19,23 +20,28 @@ const viewTmp = (routers) => {
   root.innerHTML = '';
   console.log(routers)
   switch (router) {
-    case 'wall':
-    root.innerHTML = '';
-      root.appendChild(wall());
-      break; 
-    case 'signUp':
-      root.appendChild(signUp());
-      break;
-      case 'signIn':
-      root.appendChild(signIn());
-      break;
-    default:
-      root.appendChild(signUp());
-      break;
+  case 'wall':
+    // getNotes((notes) => {
+    //   root.innerHTML = '';        
+    //   root.appendChild(wall(notes));  
+    // })
+    
+    //getPosts()
+    root.appendChild(wall());
+    break; 
+  case 'signUp':
+    root.appendChild(signUp());
+    break;
+  case 'signIn':
+    root.appendChild(signIn());
+    break;
+  default:
+    root.appendChild(signUp());
+    break;
   }
-}
+};
 
 export const initRouter = () => {
   window.addEventListener('load', changeTmp(window.location.hash))
   if (('onhashchange' in window)) window.onhashchange = () => changeTmp(window.location.hash);
-}
+};
