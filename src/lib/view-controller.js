@@ -7,7 +7,7 @@ export const signUpOnSubmit = () => {
   const email = document.querySelector('#up-email').value;
   const password = document.querySelector('#up-password').value;
   signUp(email, password)
-  .then(result =>{
+  .then(result => {
     const urlMyPage = {
        url: window.location.href+'#/signIn'
     }

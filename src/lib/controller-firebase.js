@@ -5,11 +5,11 @@ export const signUp = (email, password) =>
     firebase.auth().createUserWithEmailAndPassword(email, password);
 
 export const loginFacebook = () => {
-    var provider = new firebase.auth.FacebookAuthProvider();
+    const provider = new firebase.auth.FacebookAuthProvider();
     return firebase.auth().signInWithPopup(provider)
 };
 
 export const loginGoogle = () => {
-    var provider = new firebase.auth.GoogleAuthProvider();
+    const provider = new firebase.auth.GoogleAuthProvider();
     return firebase.auth().signInWithPopup(provider)
 };
