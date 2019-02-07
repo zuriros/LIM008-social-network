@@ -1,57 +1,59 @@
- import { addNoteOnSubmit } from "../lib/view-controller.js";
-//  //deleteNoteOnClick
-// const itemNote = (objNote) => {
-//   const liElement = document.createElement('li');
-//   liElement.classList.add('mdl-list__item');
-//   liElement.innerHTML = `
-//     <span class="mdl-list__item-primary-content">
-//       <span>${objNote.title}</span>
-//     </span>
-//     <a class="mdl-list__item-secondary-action" id="btn-deleted-${objNote.id}">
-//       <i class="material-icons">delete</i>
-//     </a>
-//   `;
-//   // agregando evento de click al btn eliminar una nota
-//   liElement.querySelector(`#btn-deleted-${objNote.id}`)
-//     .addEventListener('click', () => deleteNoteOnClick(objNote));
-//   return liElement;
-// }
+import { addPostOnSubmit } from '../lib/view-controller.js';
 
-export default (notes) => {
+const divPost = () => {
+  const divElement = document.createElement('div');
+  liElement.innerHTML = `
+   <div> 
+    <div>    
+      <img src="C:\Users\laboratoria\Downloads\cat_icon.jpg" height="42" width="42">
+      <span>Catina<span>
+    </div>
+    <div>
+      <textarea rows="4" cols="50">
+        At w3schools.com you will learn how to make a website. We offer free tutorials in all web development technologies. 
+      </textarea>
+    </div>
+    <div>    
+      <button>Like</button>
+      <span>2<span>
+      <button>Editar</button>
+      <button>Eliminar</button>
+    </div>   
+   </div>    
+  `;
+  return divElement;
+}
+
+export default (arrPosts) => {
   const divContainer = document.createElement('div');
   const homeContent = `
-    <!-- form add note -->
-    <form class="d-flex justify-content-center">
-      <div class="mdl-textfield mdl-js-textfield">
-        <input class="mdl-textfield__input" type="text" id="input-new-note">
-        <label class="mdl-textfield__label" for="input-new-note">Agrega una nota...</label>
-      </div>
-      <button class="mx-1 mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored" id="btn-add-note">
-        <i class="material-icons">add</i>
-      </button>
-      <div id="demo-snackbar-example" class="mdl-js-snackbar mdl-snackbar">
-        <div class="mdl-snackbar__text"></div>
-        <button class="mdl-snackbar__action" type="button"></button>
-      </div>
+    <!-- form add post -->
+    <form >
+      <div >
+       <input  id="input-new-post" placeholder="Ingresa tu post">
+       
+       <select id="select-type-share">
+        <option>Publico</option>
+        <option>Privado</option>
+       </select>
+       
+       <button  id="btn-add-post">Publicar </button>
+      
+       </div>
     </form>
-    <!-- notes -->
-    <section class="w-60 d-flex justify-content-center m-auto">
-      <ul class="w-100 demo-list-control mdl-list" id="notes-list">
-      </ul>
+    <!-- posts -->
+    <section id="container-posts">
+     
     </section>
-
-    <!-- snackbar -->
-    <div id="demo-snackbar" class="mdl-js-snackbar mdl-snackbar">
-      <div class="mdl-snackbar__text"></div>
-      <button class="mdl-snackbar__action" type="button"></button>
-    </div>
   `;
   divContainer.innerHTML = homeContent;
-   const buttonAddNote = divContainer.querySelector('#btn-add-note');
-   const ul = divContainer.querySelector('#notes-list');
-  // notes.forEach(note => {
-  //   ul.appendChild(itemNote(note));
+  const buttonAddPost = divContainer.querySelector('#btn-add-post');
+  //const containerPosts = divContainer.querySelector('#container-posts');
+  //containerPosts.appendChild(divPost());
+  console.log(arrPosts);
+  // arrPosts.forEach(objPost => {
+  //   containerPosts.appendChild(divPost());
   // });
-  buttonAddNote.addEventListener('click', addNoteOnSubmit);
+  buttonAddPost.addEventListener('click', addPostOnSubmit);
   return divContainer;
-}
+};
