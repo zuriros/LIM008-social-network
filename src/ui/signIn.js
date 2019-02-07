@@ -1,4 +1,4 @@
-import { signInOnSubmit, showUp } from "../lib/view-controller.js";
+import { signInOnSubmit, showUp } from '../lib/view-controller.js';
 export default () => {
   const form = document.createElement('form');
   const formContent = `
