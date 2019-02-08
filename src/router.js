@@ -1,7 +1,7 @@
 import signUp from './ui/signUp.js';
 import signIn from './ui/signIn.js';
 import wall from './ui/wall.js';
-// import {getNotes} from './lib/controller-firebase.js';
+import {getPost} from './lib/controller-firebase.js';
 
 const changeTmp = (hash) => {
   console.log('changeTmp' + hash);
@@ -21,13 +21,11 @@ const viewTmp = (routers) => {
   console.log(routers);
   switch (router) {
   case 'wall':
-    // getNotes((notes) => {
-    //   root.innerHTML = '';        
-    //   root.appendChild(wall(notes));  
-    // })
-    
-    //getPosts()
-    root.appendChild(wall());
+    debugger;
+    getPost((arrPosts) => {
+      root.innerHTML = '';        
+      root.appendChild(wall(arrPosts));  
+    });
     break; 
   case 'signUp':
     root.appendChild(signUp());

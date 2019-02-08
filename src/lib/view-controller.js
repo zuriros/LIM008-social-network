@@ -1,4 +1,4 @@
-import { signIn, signUp, loginFacebook, loginGoogle, addPost } from './controller-firebase.js';
+import { signIn, signUp, loginFacebook, loginGoogle, addPost} from './controller-firebase.js';
 
 const changeHash = (hash) => {
   location.hash = hash;

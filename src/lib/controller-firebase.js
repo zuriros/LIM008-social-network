@@ -1,3 +1,4 @@
+
 export const signIn = (email, password) =>
   firebase.auth().signInWithEmailAndPassword(email, password);
 
@@ -16,10 +17,21 @@ export const loginGoogle = () => {
 
 export const addPost = (textNewNote, privacidad) => {
   return firebase.firestore().collection('posts').add({
-    userId: firebase.auth().currentUser.uid,
     descripcion: textNewNote,
     likeCounter: 0,
+    userId: firebase.auth().currentUser.uid,
     typeShare: privacidad,
     date: new Date()
   });
 };
+export const getPost = (callback) => {
+  firebase.firestore().collection('posts')
+    .onSnapshot((querySnapshot) => {
+      const arrPosts = [];
+      querySnapshot.forEach((doc) => {
+        arrPosts.push({ id: doc.id, ...doc.data() })
+      });
+      callback(arrPosts);
+    });
+
+}
