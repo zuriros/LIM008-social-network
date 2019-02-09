@@ -1,10 +1,10 @@
-import { addPostOnSubmit } from '../lib/view-controller.js';
+import { addPostOnSubmit, deletePostOnClick, countLikeOnClick, editPostOnClick} from '../lib/view-controller.js';
 
 
 const divPost = (objPost) => {
   const divElement = document.createElement('div');
   divElement.innerHTML = `
-   <div> 
+   <div id="arrpost"> 
     <div>    
       <img id ='user-img' src="https://st2.depositphotos.com/3400509/7601/v/950/depositphotos_76011101-stock-illustration-kitty-head-icon.jpg" height="42" width="42">
       <span id='user-name'>name<span>
@@ -16,13 +16,39 @@ const divPost = (objPost) => {
       </textarea>
     </div>
     <div>    
-      <button id='btn-like'>Like</button>
+      <button id='btn-like-${objPost.id}'>Like</button>
       <span id='count-like'>${objPost.likeCounter}<span>
       <button id='btn-edit'>Editar</button>
-      <button id='btn-delete'>Eliminar</button>
-    </div>   
+      <button id='btn-delete-${objPost.id}'>Eliminar</button>
+    </div>  
+    
+    <!-- edit div -->
+    <div>
+    <textarea id="txt-edit-post-${objPost.id}">
+    ${objPost.descripcion}
+    </textarea>
+    <select id="select-type-share-${objPost.id}">
+     <option>Publico</option>
+     <option>Privado</option>
+    </select>
+    
+    <button  id="btn-edit-post-${objPost.id}">Guardar </button>
+   
+    </div>
+
    </div>    
   `;
+  divElement.querySelector(`#btn-delete-${objPost.id}`)
+  .addEventListener('click', () => deletePostOnClick(objPost));
+
+  divElement.querySelector(`#btn-like-${objPost.id}`)
+  .addEventListener('click', () => countLikeOnClick(objPost));
+
+  divElement.querySelector(`#btn-edit-post-${objPost.id}`)
+  .addEventListener('click', () => editPostOnClick(objPost,));
+
+
+
   return divElement;
 };
 
@@ -50,7 +76,7 @@ export default (arrPosts) => {
   `;
   divContainer.innerHTML = homeContent;
   const buttonAddPost = divContainer.querySelector('#btn-add-post');
-  const containerPosts = divContainer.querySelector('#container-posts');
+  const containerPosts = divContainer.querySelector('#container-posts'); 
   
   arrPosts.forEach(objPost => {
     containerPosts.appendChild(divPost(objPost));
@@ -58,4 +84,6 @@ export default (arrPosts) => {
 
   buttonAddPost.addEventListener('click', addPostOnSubmit);
   return divContainer;
+  
 };
+ 

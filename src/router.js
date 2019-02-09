@@ -21,7 +21,6 @@ const viewTmp = (routers) => {
   console.log(routers);
   switch (router) {
   case 'wall':
-    debugger;
     getPost((arrPosts) => {
       root.innerHTML = '';        
       root.appendChild(wall(arrPosts));  

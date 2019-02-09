@@ -25,13 +25,31 @@ export const addPost = (textNewNote, privacidad) => {
   });
 };
 export const getPost = (callback) => {
-  firebase.firestore().collection('posts')
+  firebase.firestore().collection('posts').orderBy('date', 'desc')
     .onSnapshot((querySnapshot) => {
       const arrPosts = [];
       querySnapshot.forEach((doc) => {
-        arrPosts.push({ id: doc.id, ...doc.data() })
+        arrPosts.push({ id: doc.id, ...doc.data() });
       });
       callback(arrPosts);
     });
 
-}
+};
+
+export const countLike = (objtPost) => {
+  const counter = parseInt(objtPost.likeCounter)  + 1
+  firebase.firestore().collection('posts').doc(objtPost.id).update({
+    'likeCounter': counter
+  });
+};
+
+export const deletePost = (id) => {
+  firebase.firestore().collection('posts').doc(id).delete();
+};
+
+export const editPost = (objtPost, txtEditPost, valShare) => {
+  firebase.firestore().collection('posts').doc(objtPost.id).update({
+    'descripcion': txtEditPost,
+    'typeShare': valShare 
+  });
+};
