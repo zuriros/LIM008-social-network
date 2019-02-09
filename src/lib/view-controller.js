@@ -1,4 +1,4 @@
-import { signIn, signUp, loginFacebook, loginGoogle, addPost } from './controller-firebase.js';
+import { signIn, signUp, loginFacebook, loginGoogle, addPost, deletePost, editPost, countLike} from './controller-firebase.js';
 
 const changeHash = (hash) => {
   location.hash = hash;
@@ -12,7 +12,7 @@ export const signUpOnSubmit = () => {
         url: window.location.href + '#/signIn'
       };
       result.user.sendEmailVerification(urlMyPage).catch(function(error) {
-        alert('No se pudo enviar email')
+        alert('No se pudo enviar email');
       });
       firebase.auth().signOut();
     }).catch(function(error) {
@@ -22,19 +22,19 @@ export const signUpOnSubmit = () => {
 export const signFacebook = () => {
   loginFacebook()
     .then(() => changeHash('/wall'))
-    .catch(() => { })
+    .catch(() => { });
 };
 export const signGoogle = () => {
   loginGoogle()
     .then(() => changeHash('/wall'))
-    .catch(() => { })
+    .catch(() => { });
 };
 export const signInOnSubmit = () => {
   const email = document.querySelector('#in-email').value;
   const password = document.querySelector('#in-password').value;
   signIn(email, password)
     .then(() => changeHash('/wall'))
-    .catch(() => { })
+    .catch(() => { });
 };
 export const showIn = () => {
   changeHash('/signIn');
@@ -48,3 +48,19 @@ export const addPostOnSubmit = (event) => {
   const select = document.getElementById('select-type-share');
   addPost(input.value, select.value);
 };
+
+export const deletePostOnClick = (objPost) => {
+  deletePost(objPost.id);
+};
+
+export const editPostOnClick = (objPost) => {
+  const txtEditPost = document.getElementById(`txt-edit-post-${objPost.id}`);
+  const selEditTypeShare = document.getElementById(`select-type-share-${objPost.id}`);
+  
+  editPost(objPost, txtEditPost.value, selEditTypeShare.value);
+}
+
+export const countLikeOnClick = (objtPost) => {
+  countLike(objtPost);
+}
+
