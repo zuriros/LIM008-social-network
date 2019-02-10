@@ -80,6 +80,11 @@ border-radius: 1px;
 margin: 0 0 10px;
 padding: 10px 0;
 }
+
+
+
+
+
 /* Change styles for cancel button and signup button on extra small screens */
 @media screen and (max-width: 300px) {
   .signupbtn {

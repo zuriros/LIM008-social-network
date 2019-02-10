@@ -1,5 +1,4 @@
-import { addPostOnSubmit, deletePostOnClick, countLikeOnClick, editPostOnClick} from '../lib/view-controller.js';
-
+import { addPostOnSubmit, deletePostOnClick, countLikeOnClick, editPostOnClick } from '../lib/view-controller.js';
 
 const divPost = (objPost) => {
   const divElement = document.createElement('div');
@@ -18,37 +17,44 @@ const divPost = (objPost) => {
     <div>    
       <button id='btn-like-${objPost.id}'>Like</button>
       <span id='count-like'>${objPost.likeCounter}<span>
-      <button id='btn-edit'>Editar</button>
+      <button id='btn-edit-${objPost.id}'>Editar</button>
       <button id='btn-delete-${objPost.id}'>Eliminar</button>
     </div>  
     
-    <!-- edit div -->
-    <div>
-    <textarea id="txt-edit-post-${objPost.id}">
-    ${objPost.descripcion}
-    </textarea>
-    <select id="select-type-share-${objPost.id}">
-     <option>Publico</option>
-     <option>Privado</option>
-    </select>
+    <!-- Modal edit div -->
+    <div id="myModal-${objPost.id}" class="modal">
     
-    <button  id="btn-edit-post-${objPost.id}">Guardar </button>
-   
+    <!-- Modal content -->
+        <div class="modal-content">
+            <span id="close-${objPost.id}" class="close">&times;</span>
+    
+            <textarea id="txt-edit-post-${objPost.id}">
+                ${objPost.descripcion}
+            </textarea>
+            
+            <select id="select-type-share-${objPost.id}">
+                <option>Publico</option>
+                <option>Privado</option>
+            </select>
+            
+            <button  id="btn-edit-post-${objPost.id}">Guardar
+            </button>
+          
+        </div>
     </div>
 
    </div>    
   `;
   divElement.querySelector(`#btn-delete-${objPost.id}`)
-  .addEventListener('click', () => deletePostOnClick(objPost));
-
+    .addEventListener('click', () => deletePostOnClick(objPost));
   divElement.querySelector(`#btn-like-${objPost.id}`)
-  .addEventListener('click', () => countLikeOnClick(objPost));
-
+    .addEventListener('click', () => countLikeOnClick(objPost));
   divElement.querySelector(`#btn-edit-post-${objPost.id}`)
-  .addEventListener('click', () => editPostOnClick(objPost,));
-
-
-
+    .addEventListener('click', () => editPostOnClick(objPost));
+  divElement.querySelector(`#btn-edit-${objPost.id}`)
+    .addEventListener('click', () => (document.getElementById(`myModal-${objPost.id}`).style.display = 'block'));
+  divElement.querySelector(`#close-${objPost.id}`)
+    .addEventListener('click', () => (document.getElementById(`myModal-${objPost.id}`).style.display = 'none'));
   return divElement;
 };
 
@@ -59,7 +65,6 @@ export default (arrPosts) => {
     <form>
       <div>
        <input id="input-new-post" placeholder="Ingresa tu post">
-      
        <select id="select-type-share">
         <option>Publico</option>
         <option>Privado</option>
@@ -76,14 +81,10 @@ export default (arrPosts) => {
   `;
   divContainer.innerHTML = homeContent;
   const buttonAddPost = divContainer.querySelector('#btn-add-post');
-  const containerPosts = divContainer.querySelector('#container-posts'); 
-  
+  const containerPosts = divContainer.querySelector('#container-posts');
   arrPosts.forEach(objPost => {
     containerPosts.appendChild(divPost(objPost));
   });
-
   buttonAddPost.addEventListener('click', addPostOnSubmit);
   return divContainer;
-  
 };
- 

@@ -1,4 +1,4 @@
-import { signIn, signUp, loginFacebook, loginGoogle, addPost, deletePost, editPost, countLike} from './controller-firebase.js';
+import { signIn, signUp, loginFacebook, loginGoogle, addPost, deletePost, editPost, countLike } from './controller-firebase.js';
 
 const changeHash = (hash) => {
   location.hash = hash;
@@ -11,11 +11,11 @@ export const signUpOnSubmit = () => {
       const urlMyPage = {
         url: window.location.href + '#/signIn'
       };
-      result.user.sendEmailVerification(urlMyPage).catch(function(error) {
+      result.user.sendEmailVerification(urlMyPage).catch(function (error) {
         alert('No se pudo enviar email');
       });
       firebase.auth().signOut();
-    }).catch(function(error) {
+    }).catch(function (error) {
       alert(error.message);
     });
 };
@@ -46,14 +46,18 @@ export const addPostOnSubmit = (event) => {
   event.preventDefault();
   const input = document.getElementById('input-new-post');
   const select = document.getElementById('select-type-share');
-  addPost(input.value, select.value);
+  if (input.value !== '') addPost(input.value, select.value)
+  else alert('por favor escribe algo')
 };
 
 export const deletePostOnClick = (objPost) => {
-  deletePost(objPost.id);
+  let answer = confirm('estas seguro de eliminar?');
+  if (answer == true) deletePost(objPost.id);
 };
 
 export const editPostOnClick = (objPost) => {
+
+
   const txtEditPost = document.getElementById(`txt-edit-post-${objPost.id}`);
   const selEditTypeShare = document.getElementById(`select-type-share-${objPost.id}`);
   
