@@ -1,4 +1,4 @@
-export const obtenerFecha = (d) => {
+export const convertirFecha = (d) => {
     // const d = new Date(timeStamp)
     let month = '' + (d.getMonth() + 1);
     let day = '' + d.getDate();

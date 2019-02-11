@@ -17,11 +17,13 @@ export const loginGoogle = () => {
 
 export const addPost = (textNewNote, privacidad) => {
   return firebase.firestore().collection('posts').add({
+    name: firebase.auth().currentUser.displayName,
+    profilePicUrl: firebase.auth().currentUser.photoURL,
     descripcion: textNewNote,
     likeCounter: 0,
     userId: firebase.auth().currentUser.uid,
     typeShare: privacidad,
-    date: new Date()
+    date: firebase.firestore.FieldValue.serverTimestamp()
   });
 };
 

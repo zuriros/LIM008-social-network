@@ -1,13 +1,14 @@
 import { addPostOnSubmit, deletePostOnClick, countLikeOnClick, editPostOnClick } from '../lib/view-controller.js';
-
+import {convertirFecha} from '../util/util.js';
 const divPost = (objPost) => {
+  const datePost = convertirFecha(objPost.date.toDate());
   const divElement = document.createElement('div');
   divElement.innerHTML = `
    <div id="arrpost"> 
     <div>    
-      <img id ='user-img' src="https://st2.depositphotos.com/3400509/7601/v/950/depositphotos_76011101-stock-illustration-kitty-head-icon.jpg" height="42" width="42">
-      <span id='user-name'>name<span>
-      <span>${objPost.date}<span>
+      <img id ='user-img' src=${objPost.profilePicUrl} height="42" width="42">
+      <span id='user-name'>${objPost.name}<span>
+      <span>${datePost}<span>
     </div>
     <div>
       <textarea  id='user-post' rows="4" cols="50">
