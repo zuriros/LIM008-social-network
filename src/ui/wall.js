@@ -62,19 +62,33 @@ const divPost = (objPost) => {
 export default (arrPosts) => {
   const divContainer = document.createElement('div');
   const homeContent = `
-    <!-- form add post -->
-    <form>
-      <div>
-       <input id="input-new-post" placeholder="Ingresa tu post">
-       <select id="select-type-share">
-        <option>Publico</option>
-        <option>Privado</option>
-       </select>
-       
-       <button  id="btn-add-post">Publicar </button>
-      
-       </div>
+  <header>
+      <img class="logo" src="img/ecohack-logo.png">
+      <button  id="close-sesion" class="btn"> Cerrar Sesión </button>
+        
+  </header>
+  
+  <!-- form add post -->
+    <form id="add-post">
+   
+        <div> Crear Publicación </div>
+        
+        <div>
+              <input id="input-new-post" placeholder="¿Tienes un nuevo invento?">
+        </div>
+        
+        <div>
+              <button> Foto/Video </button>
+              <select id="select-type-share">
+                <option>Publico</option>
+                <option>Privado</option>
+              </select>
+        </div> 
+        
+        <button  id="btn-add-post">Publicar </button>
+        
     </form>
+  
     <!-- posts -->
     <section id="container-posts">
      

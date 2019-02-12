@@ -8,6 +8,7 @@ export const signUpOnSubmit = () => {
   const password = document.querySelector('#up-password').value;
   signUp(email, password)
     .then(result => {
+      alert('te acabamos de enviar un correo de confirmacion, por favor revisa tu bandeja de entrada');
       const urlMyPage = {
         url: window.location.href + '#/signIn'
       };
@@ -18,6 +19,7 @@ export const signUpOnSubmit = () => {
     }).catch(function (error) {
       alert(error.message);
     });
+    
 };
 export const signFacebook = () => {
   loginFacebook()
