@@ -12,7 +12,7 @@ const changeTmp = (hash) => {
   } else {
     return viewTmp('#/signUp');
   }
-}
+};
 
 const viewTmp = (routers) => {
   const router = routers.substr(2, routers.length - 2)

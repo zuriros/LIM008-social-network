@@ -15,11 +15,13 @@ export const loginGoogle = () => {
   return firebase.auth().signInWithPopup(provider);
 };
 
-export const addPost = (textNewNote, privacidad) => {
+export const addPost = (textNewNote, privacidad, userUid) => {
+  console.log('entre');
+  
   return firebase.firestore().collection('posts').add({
     descripcion: textNewNote,
     likeCounter: 0,
-    userId: firebase.auth().currentUser.uid,
+    userId: userUid,
     typeShare: privacidad,
     date: new Date()
   });
@@ -33,11 +35,10 @@ export const getPost = (callback) => {
       });
       callback(arrPosts);
     });
-
 };
 
 export const countLike = (objtPost) => {
-  const counter = parseInt(objtPost.likeCounter)  + 1
+  const counter = parseInt(objtPost.likeCounter) + 1;
   firebase.firestore().collection('posts').doc(objtPost.id).update({
     'likeCounter': counter
   });

@@ -42,11 +42,30 @@ export const showIn = () => {
 export const showUp = () => {
   changeHash('/signUp');
 };
+const authUserUid = () => {
+  return firebase.auth().currentUser;
+};
 export const addPostOnSubmit = (event) => {
   event.preventDefault();
   const input = document.getElementById('input-new-post');
   const select = document.getElementById('select-type-share');
-  addPost(input.value, select.value);
+  const userUid = authUserUid();
+  const data = {
+    message: '',
+    timeout: 2000,
+    actionText: 'Undo'
+  };
+  addPost(input.value, select.value, userUid)
+ 
+    .then(() => {
+      input.value = '';
+      data.message = 'Nota agregada',
+      alert('');
+    }).catch(() => {
+      input.value = '';
+      data.message = 'Lo sentimos, no se pudo agregar la nota';
+      alert('');
+    });
 };
 
 export const deletePostOnClick = (objPost) => {
@@ -58,9 +77,9 @@ export const editPostOnClick = (objPost) => {
   const selEditTypeShare = document.getElementById(`select-type-share-${objPost.id}`);
   
   editPost(objPost, txtEditPost.value, selEditTypeShare.value);
-}
+};
 
 export const countLikeOnClick = (objtPost) => {
   countLike(objtPost);
-}
+};
 
