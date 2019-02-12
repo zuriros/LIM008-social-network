@@ -17,13 +17,16 @@ export const loginGoogle = () => {
 
 export const addPost = (textNewNote, privacidad) => {
   return firebase.firestore().collection('posts').add({
+    name: firebase.auth().currentUser.displayName,
+    profilePicUrl: firebase.auth().currentUser.photoURL,
     descripcion: textNewNote,
     likeCounter: 0,
     userId: firebase.auth().currentUser.uid,
     typeShare: privacidad,
-    date: new Date()
+    date: firebase.firestore.FieldValue.serverTimestamp()
   });
 };
+
 export const getPost = (callback) => {
   firebase.firestore().collection('posts').orderBy('date', 'desc')
     .onSnapshot((querySnapshot) => {
@@ -31,13 +34,13 @@ export const getPost = (callback) => {
       querySnapshot.forEach((doc) => {
         arrPosts.push({ id: doc.id, ...doc.data() });
       });
-      callback(arrPosts);
+      const arr1 = arrPosts.filter(post => post.typeShare === 'Publico' || (post.typeShare === 'Privado' && post.userId === firebase.auth().currentUser.uid));
+      callback(arr1);
     });
-
 };
 
 export const countLike = (objtPost) => {
-  const counter = parseInt(objtPost.likeCounter)  + 1
+  const counter = parseInt(objtPost.likeCounter) + 1;
   firebase.firestore().collection('posts').doc(objtPost.id).update({
     'likeCounter': counter
   });
@@ -50,6 +53,6 @@ export const deletePost = (id) => {
 export const editPost = (objtPost, txtEditPost, valShare) => {
   firebase.firestore().collection('posts').doc(objtPost.id).update({
     'descripcion': txtEditPost,
-    'typeShare': valShare 
+    'typeShare': valShare
   });
 };
