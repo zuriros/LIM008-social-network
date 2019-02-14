@@ -14,7 +14,7 @@ export default () => {
     </div>
 
       
-      <button type="button" id ="btn-google" class="google"><i class="fa fa-google fa-fw"></i>Iniciar sesión con  Google</button>
+      <button type="button" id ="btn-google" class="google">cIniciar sesión con  Google</button>
       <button type="button" id ="btn-facebook" class="facebook"><i class="fa fa-facebook fa-fw"></i>Iniciar sesión con  Facebook</button>
   
       <div class="center">---------------- o ----------------</div>

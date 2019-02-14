@@ -6,20 +6,20 @@ const divPost = (objPost) => {
   divElement.innerHTML = `
    <div id="arrpost"> 
     <div>    
-      <img id ='user-img' src=${objPost.profilePicUrl} height="42" width="42">
+      <img id ='user-img' src=${objPost.profilePicUrl}>
       <span id='user-name'>${objPost.name}<span>
       <span>${datePost}<span>
     </div>
-    <div>
-      <textarea  id='user-post' rows="4" cols="50">
+
+      <textarea  id='user-post' rows="4" cols="50" disabled>
        ${objPost.descripcion}
       </textarea>
-    </div>
-    <div>    
-      <button id='btn-like-${objPost.id}'>Like</button>
+
+      <div>    
+      <button id='btn-like-${objPost.id}' class="btnpost">Like</button>
       <span id='count-like'>${objPost.likeCounter}<span>
-      <button id='btn-edit-${objPost.id}'>Editar</button>
-      <button id='btn-delete-${objPost.id}'>Eliminar</button>
+      <button id='btn-edit-${objPost.id}' class="btnpost">Editar</button>
+      <button id='btn-delete-${objPost.id}' class="btnpost">Eliminar</button>
     </div>  
     
     <!-- Modal edit div -->
@@ -78,14 +78,14 @@ export default (arrPosts) => {
         </div>
         
         <div>
-              <button> Foto/Video </button>
+              <button class="btn"> Foto/Video </button>
               <select id="select-type-share">
                 <option>Publico</option>
                 <option>Privado</option>
               </select>
         </div> 
         
-        <button  id="btn-add-post">Publicar </button>
+        <button  id="btn-add-post" class="btn-sign">Publicar </button>
         
     </form>
   
