@@ -15,7 +15,7 @@ const changeTmp = (hash) => {
 };
 
 const viewTmp = (routers) => {
-  const router = routers.substr(2, routers.length - 2)
+  const router = routers.substr(2, routers.length - 2);
   const root = document.getElementById('container');
   root.innerHTML = '';
   console.log(routers);

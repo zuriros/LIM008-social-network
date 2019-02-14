@@ -1,4 +1,4 @@
-import { signIn, signUp, loginFacebook, loginGoogle, addPost, deletePost, editPost, countLike} from './controller-firebase.js';
+import { signIn, signUp, loginFacebook, loginGoogle, addPost, deletePost, editPost, countLike } from './controller-firebase.js';
 
 const changeHash = (hash) => {
   location.hash = hash;
@@ -8,6 +8,7 @@ export const signUpOnSubmit = () => {
   const password = document.querySelector('#up-password').value;
   signUp(email, password)
     .then(result => {
+      alert('te acabamos de enviar un correo de confirmacion, por favor revisa tu bandeja de entrada');
       const urlMyPage = {
         url: window.location.href + '#/signIn'
       };
@@ -42,34 +43,20 @@ export const showIn = () => {
 export const showUp = () => {
   changeHash('/signUp');
 };
-const authUserUid = () => {
-  return firebase.auth().currentUser;
-};
 export const addPostOnSubmit = (event) => {
   event.preventDefault();
+  const authUserUid = firebase.auth().currentUser.uid;
+  const authUserPhoto = firebase.auth().currentUser.photoURL;
+  const authUserName = firebase.auth().currentUser.displayName;
   const input = document.getElementById('input-new-post');
   const select = document.getElementById('select-type-share');
-  const userUid = authUserUid();
-  const data = {
-    message: '',
-    timeout: 2000,
-    actionText: 'Undo'
-  };
-  addPost(input.value, select.value, userUid)
- 
-    .then(() => {
-      input.value = '';
-      data.message = 'Nota agregada',
-      alert('');
-    }).catch(() => {
-      input.value = '';
-      data.message = 'Lo sentimos, no se pudo agregar la nota';
-      alert('');
-    });
+  if (input.value !== '') addPost(input.value, select.value, authUserUid, authUserPhoto, authUserName);
+  else alert('por favor escribe algo');
 };
 
 export const deletePostOnClick = (objPost) => {
-  deletePost(objPost.id);
+  let answer = confirm('¿Estas seguro de eliminar?');
+  if (answer == true) deletePost(objPost.id);
 };
 
 export const editPostOnClick = (objPost) => {
